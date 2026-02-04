@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.veneta.prestotest.presto.dao.PrestoDAO">
+
+    <select id="selectUser">
+        /* 연합 쿼리 실습: MySQL 유저와 Maria 유저 Join */
+        SELECT
+            u.name as mysqlUserName,
+            l.name as mariaUserName
+        FROM mysql.default.users u
+                 JOIN maria.default.user l
+    </select>
+
+</mapper>

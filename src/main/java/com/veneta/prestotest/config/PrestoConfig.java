@@ -1,11 +1,13 @@
 package com.veneta.prestotest.config;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 
 @Configuration
+@MapperScan("com.veneta.prestotest")
 public class PrestoConfig {
     @Bean
     public Scheduler prestoScheduler() {
