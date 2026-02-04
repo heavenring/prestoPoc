@@ -4,9 +4,9 @@ spring:
 
   datasource:
     # PrestoDB 서버 주소 및 기본 카탈로그 설정
-    url: jdbc:presto://localhost:8080/mysql/default
+    url: jdbc:presto://localhost:40001/mysql/default
     driver-class-name: com.facebook.presto.jdbc.PrestoDriver
-    username: ms
+    username: admin
 
     hikari:
       maximum-pool-size: 10      # Scheduler 스레드 개수(10)와 맞춤
