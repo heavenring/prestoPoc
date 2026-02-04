@@ -29,6 +29,8 @@ dependencies {
     // Source: https://mvnrepository.com/artifact/com.facebook.presto/presto-jdbc
     implementation 'com.facebook.presto:presto-jdbc:0.296'
 
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.5'
+
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     compileOnly 'org.projectlombok:lombok'
