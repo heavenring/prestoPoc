@@ -7,3 +7,13 @@ spring:
     url: jdbc:presto://localhost:8080/mysql/default
     driver-class-name: com.facebook.presto.jdbc.PrestoDriver
     username: ms
+
+    hikari:
+      maximum-pool-size: 10      # Scheduler 스레드 개수(10)와 맞춤
+      minimum-idle: 5            # 최소 유휴 커넥션
+      connection-timeout: 30000  # 커넥션 획득 대기 시간 (30초)
+      max-lifetime: 1800000      # 커넥션 최대 생존 시간 (30분)
+
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:mapper/**/*.xml
