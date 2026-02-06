@@ -7,7 +7,7 @@ import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 
 @Configuration
-@MapperScan("com.veneta.prestotest")
+@MapperScan("com.veneta.prestotest.presto.dao")
 public class PrestoConfig {
     @Bean
     public Scheduler prestoScheduler() {
