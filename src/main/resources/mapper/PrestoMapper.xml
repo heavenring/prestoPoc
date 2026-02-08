@@ -11,4 +11,11 @@
                  cross JOIN mariadb.dev_mariadb.user l
     </select>
 
+    <update id="updateUserName">
+        UPDATE mysql.dev_mysql.user
+        SET userName = #{newUserName}
+        WHERE userName = #{userName}
+    </update>
+
+
 </mapper>

@@ -11,4 +11,7 @@ public interface PrestoDAO {
     // List가 아닌 void이며, 한 줄씩 처리할 핸들러를 넘깁니다.
     @ResultType(UserDTO.class)
     void selectUser(ResultHandler<UserDTO> handler);
+
+    void updateUserName(String userName, String newUserName);
 }
+

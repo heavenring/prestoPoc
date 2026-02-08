@@ -5,6 +5,7 @@ import com.veneta.prestotest.presto.dto.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 
 @Service
@@ -24,6 +25,12 @@ public class PrestoServiceImpl implements PrestoService{
                 // DB에서 한 줄 읽을 때마다 sink.next()로 스트림에 태움
                 prestoDAO.selectUser(context -> {
                     sink.next(context.getResultObject());
+
+                    try {
+                        Thread.sleep(1000);
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                    }
                 });
                 // DB 조회 종료
                 sink.complete();
@@ -32,5 +39,16 @@ public class PrestoServiceImpl implements PrestoService{
                 sink.error(e);
             }
         }).subscribeOn(prestoScheduler);
+    }
+
+    @Override
+    public Mono<String> updateUserName(String userName, String newUserName) {
+        // fromCallable: 블로킹 작업을 감쌀 때 사용
+        return Mono.fromCallable(() -> {
+                    prestoDAO.updateUserName(userName, newUserName);
+
+                    return "success";
+                })
+                .subscribeOn(prestoScheduler); // JDBC 스레드풀 사용
     }
 }

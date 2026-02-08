@@ -6,8 +6,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/presto")
@@ -20,5 +22,11 @@ public class PrestoController {
     public Flux<UserDTO> getPresto() {
 
         return prestoService.selectUser();
+    }
+
+    @GetMapping("/update")
+    public Mono<String> updateUser(@RequestParam String userName, @RequestParam String newUserName) {
+
+        return prestoService.updateUserName(userName, newUserName);
     }
 }
