@@ -24,10 +24,12 @@ public class PrestoServiceImpl implements PrestoService{
             try {
                 // DB에서 한 줄 읽을 때마다 sink.next()로 스트림에 태움
                 prestoDAO.selectUser(context -> {
+                    System.out.println("데이터 처리 중: " + java.time.LocalDateTime.now());
+
                     sink.next(context.getResultObject());
 
                     try {
-                        Thread.sleep(1000);
+                        Thread.sleep(1000); // 1초 대기
                     } catch (InterruptedException e) {
                         Thread.currentThread().interrupt();
                     }
